@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "957925049381",
+    "project_id": "practicando-con-firebase",
+    "storage_bucket": "practicando-con-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957925049381:android:8fa4972dc5c4228c02abcc",
+        "android_client_info": {
+          "package_name": "com.buenhijogames.firebaseautentication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhxEA9_4DoCEFH5tfIOwdYxW3XDwqhVoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957925049381:android:bfbbd2174d0e387e02abcc",
+        "android_client_info": {
+          "package_name": "com.buenhijogames.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhxEA9_4DoCEFH5tfIOwdYxW3XDwqhVoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957925049381:android:524b53c77529865d02abcc",
+        "android_client_info": {
+          "package_name": "com.buenhijogames.practicandoconfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhxEA9_4DoCEFH5tfIOwdYxW3XDwqhVoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957925049381:android:a949dbbb85773e6102abcc",
+        "android_client_info": {
+          "package_name": "com.example.makeitso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhxEA9_4DoCEFH5tfIOwdYxW3XDwqhVoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
