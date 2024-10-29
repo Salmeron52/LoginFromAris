@@ -1,5 +1,6 @@
 package com.buenhijogames.firebaseautentication.ui.signup
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,8 +25,12 @@ import com.buenhijogames.firebaseautentication.FanViewModel
 import com.buenhijogames.firebaseautentication.ui.theme.PurpleGrey40
 import com.google.firebase.auth.FirebaseAuth
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(
+    fanViewModel: FanViewModel,
+    navigateToDetail: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -50,8 +55,8 @@ fun SignUpScreen() {
         {
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = fanViewModel.email,
+                onValueChange = { fanViewModel.email = it },
                 label = { Text("Email") },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -60,18 +65,40 @@ fun SignUpScreen() {
             )
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = fanViewModel.password,
+                onValueChange = { fanViewModel.password = it },
                 label = { Text("Contraseña") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 32.dp)
                     .padding(top = 16.dp)
             )
+
+            if (fanViewModel.isLoading.value) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .padding(bottom = 32.dp),
+                    color = Color.Gray
+                )
+            }
+
+            if (fanViewModel.emailExiste) {
+                Text(
+                    "Ese email ya está registrado.\nPor favor, inicia sesión",
+                    color = Color.Red,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+            }
         }
 
         OutlinedButton(
-            onClick = {},
+            onClick = {
+                if (fanViewModel.email.isNotEmpty() && fanViewModel.password.isNotEmpty()) {
+                    fanViewModel.register(fanViewModel.email, fanViewModel.password, navigateToDetail)
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp)

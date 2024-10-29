@@ -29,7 +29,7 @@ fun DetailScreen() {
     ) {
         Spacer(modifier = Modifier.height(64.dp))
         Text(
-            text = "Logueado con éxito",
+            text = "Logueado/Registrado con éxito",
             color = Color.White,
             modifier = Modifier.padding(32.dp),
             fontSize = 24.sp

@@ -33,7 +33,10 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
             )
         }
         composable<SignUp> {
-            SignUpScreen()
+            SignUpScreen(
+                fanViewModel = fanViewModel,
+                navigateToDetail = { navController.navigate(Detail) }
+            )
         }
         composable<Detail> {
             DetailScreen()

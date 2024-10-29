@@ -24,6 +24,7 @@ import javax.inject.Inject
 class FanViewModel @Inject constructor(private val authService: AuthService) : ViewModel() {
     var email by mutableStateOf("")
     var password by mutableStateOf("")
+    var emailExiste by mutableStateOf(false)
 
     private var _isLoading = MutableStateFlow<Boolean>(false)
     val isLoading: StateFlow<Boolean> = _isLoading
@@ -37,11 +38,33 @@ class FanViewModel @Inject constructor(private val authService: AuthService) : V
                 }
                 if (result != null) {
                     navigateToDetail()
+                    Log.d("FanViewModel", "¡Logueado con éxito!: $result")
                 } else {
                     Log.e("FanViewModel", "Error logging in: $result")
                 }
             } catch (e: Exception) {
                 Log.e("FanViewModel", "Error logging in: $e")
+            }
+            _isLoading.value = false
+        }
+    }
+
+    fun register(email: String, password: String, navigateToDetail: () -> Unit) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val result = withContext(Dispatchers.IO) {
+                    authService.register(email, password)
+                }
+                if (result != null) {
+                    navigateToDetail()
+                    Log.d("FanViewModel", "¡Registrado con éxito!: $result")
+                } else {
+                    Log.e("FanViewModel", "Error registering: $result")
+                }
+            } catch (e: Exception) {
+                Log.e("FanViewModel", "Error registering: ${e.message.orEmpty()}")
+                emailExiste = true
             }
             _isLoading.value = false
         }
