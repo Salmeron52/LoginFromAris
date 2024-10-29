@@ -17,10 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.buenhijogames.firebaseautentication.FanViewModel
 import com.buenhijogames.firebaseautentication.ui.theme.PurpleGrey40
 
 @Composable
-fun DetailScreen() {
+fun DetailScreen(fanViewModel: FanViewModel, navigateToLoginScreen: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -37,7 +38,11 @@ fun DetailScreen() {
 
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
             OutlinedButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    fanViewModel.logout(
+                        navigateToLogin = { navigateToLoginScreen() }
+                    )
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(32.dp),

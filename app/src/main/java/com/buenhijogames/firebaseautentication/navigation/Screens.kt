@@ -19,3 +19,6 @@ object Error
 
 @Serializable
 object CheckUserLoggedIn
+
+@Serializable
+object Logout
