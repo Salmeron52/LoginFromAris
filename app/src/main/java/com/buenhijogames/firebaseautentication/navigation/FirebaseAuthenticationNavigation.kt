@@ -30,7 +30,6 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
             LoginScreen(
                 navigateToSignUp = { navController.navigate(SignUp) },
                 navigateToDetail = { navController.navigate(Detail) },
-                navigateToError = { navController.navigate(Error) },
                 fanViewModel = fanViewModel
             )
         }
@@ -41,7 +40,10 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
             )
         }
         composable<Detail> {
-            DetailScreen()
+            DetailScreen(
+                fanViewModel = fanViewModel,
+                navigateToLoginScreen = { navController.navigate(Login) }
+            )
         }
 
         composable<Error> {
@@ -57,6 +59,10 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
             } else {
                 navController.navigate(Login)
             }
+        }
+
+        composable<Logout> {
+            fanViewModel.logout(navigateToLogin = { navController.navigate(Login) })
         }
     }
 }

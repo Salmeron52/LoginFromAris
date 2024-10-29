@@ -10,6 +10,11 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
 class AuthService @Inject constructor(private val firebaseAuth: FirebaseAuth) {
+
+    private fun getCurrentUser(): FirebaseUser? {
+        return firebaseAuth.currentUser
+    }
+
     suspend fun login(email: String, password: String): FirebaseUser? {
         return firebaseAuth.signInWithEmailAndPassword(email, password).await().user
     }
@@ -39,7 +44,7 @@ class AuthService @Inject constructor(private val firebaseAuth: FirebaseAuth) {
         return getCurrentUser() != null
     }
 
-    private fun getCurrentUser(): FirebaseUser? {
-        return firebaseAuth.currentUser
+    fun logout() {
+        firebaseAuth.signOut()
     }
 }

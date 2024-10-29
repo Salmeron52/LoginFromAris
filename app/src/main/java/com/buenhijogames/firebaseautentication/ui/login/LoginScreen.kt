@@ -39,7 +39,6 @@ import com.google.firebase.auth.FirebaseAuth
 fun LoginScreen(
     navigateToSignUp: () -> Unit,
     navigateToDetail: () -> Unit,
-    navigateToError: () -> Unit,
     fanViewModel: FanViewModel
 ) {
     val scrollState = rememberScrollState()

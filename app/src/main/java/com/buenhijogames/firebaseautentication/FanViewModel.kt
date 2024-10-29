@@ -85,4 +85,12 @@ class FanViewModel @Inject constructor(private val authService: AuthService) : V
             navigateToLogin()
         }
     }
+
+    fun logout(navigateToLogin: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) { authService.logout() }
+        navigateToLogin()
+        email = ""
+        password = ""
+    }
+
 }
