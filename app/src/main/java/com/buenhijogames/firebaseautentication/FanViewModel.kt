@@ -69,4 +69,20 @@ class FanViewModel @Inject constructor(private val authService: AuthService) : V
             _isLoading.value = false
         }
     }
+
+    private fun isUserLoggedIn(): Boolean {
+        return authService.isUserLoggedIn()
+    }
+
+    fun checkDestination(
+        navigateToDetail: () -> Unit,
+        navigateToLogin: () -> Unit
+    ) {
+        val isUserLoggedIn = isUserLoggedIn()
+        if (isUserLoggedIn) {
+            navigateToDetail()
+        } else {
+            navigateToLogin()
+        }
+    }
 }

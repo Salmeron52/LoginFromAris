@@ -21,7 +21,9 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
         composable<Splash> {
             /*SplashScreen { navController.navigate(Login) }*/
             SplashScreen (
-                navigateToLoginScreen = { navController.navigate(Login) }
+                navigateToDetail = { navController.navigate(Detail) },
+                navigateToLoginScreen = { navController.navigate(Login) },
+                fanViewModel = fanViewModel
             )
         }
         composable<Login> {
@@ -46,6 +48,15 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
             ErrorScreen(
                 navigateToLoginScreen = { navController.navigate(Login) }
             )
+        }
+
+        composable<CheckUserLoggedIn> {
+            val user = FirebaseAuth.getInstance().currentUser
+            if (user != null) {
+                navController.navigate(Detail)
+            } else {
+                navController.navigate(Login)
+            }
         }
     }
 }

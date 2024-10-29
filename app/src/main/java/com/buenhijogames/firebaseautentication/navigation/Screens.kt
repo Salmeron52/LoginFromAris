@@ -16,3 +16,6 @@ object Detail
 
 @Serializable
 object Error
+
+@Serializable
+object CheckUserLoggedIn
