@@ -39,9 +39,7 @@ fun DetailScreen(fanViewModel: FanViewModel, navigateToLoginScreen: () -> Unit) 
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
             OutlinedButton(
                 onClick = {
-                    fanViewModel.logout(
-                        navigateToLogin = { navigateToLoginScreen() }
-                    )
+                    fanViewModel.logout(navigateToLogin = { navigateToLoginScreen() })
                 },
                 modifier = Modifier
                     .fillMaxWidth()

@@ -1,7 +1,6 @@
 package com.buenhijogames.firebaseautentication.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -20,7 +19,7 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
     NavHost(navController = navController, startDestination = Splash) {
         composable<Splash> {
             /*SplashScreen { navController.navigate(Login) }*/
-            SplashScreen (
+            SplashScreen(
                 navigateToDetail = { navController.navigate(Detail) },
                 navigateToLoginScreen = { navController.navigate(Login) },
                 fanViewModel = fanViewModel
@@ -42,7 +41,12 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
         composable<Detail> {
             DetailScreen(
                 fanViewModel = fanViewModel,
-                navigateToLoginScreen = { navController.navigate(Login) }
+                navigateToLoginScreen = {
+                    navController.navigate(Login) {
+                        //Eliminamos la pila de navegación
+                        popUpTo<Login> { inclusive = true }
+                    }
+                }
             )
         }
 
@@ -62,7 +66,9 @@ fun FirebaseAuthenticationNavigation(fanViewModel: FanViewModel) {
         }
 
         composable<Logout> {
-            fanViewModel.logout(navigateToLogin = { navController.navigate(Login) })
+            fanViewModel.logout(navigateToLogin = {
+                navController.navigate(Login)
+            })
         }
     }
 }
